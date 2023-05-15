@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+span.a {
+  display: inline-block;
+  width:250px;
+  text-align: left;
+  text-indent: 20px;
+}
+
+</style>
+
+
+
+	<title>Index</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form">
+				<span class="contact100-form-title">
+					Calculation Page
+				</span>
+
+				<div class="wrap-input100">
+					<span class="label-input100">Number of parts to be produced</span>
+					<input class="input100" type="number" name="quantity" id="quantity" placeholder="Enter quantity">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100">					
+					<span class="label-input100">Dimensions of the stock part</span>
+					<div>
+						<label for="xvol">x: </label>
+						<input type="number" name="xvol" id="xvol" placeholder="Enter x">mm</input>
+					</div>
+					<div>
+						<label for="yvol">y: </label>
+						<input type="number" name="yvol" id="yvol" placeholder="Enter y">mm</input>
+					</div>
+					<div>
+						<label for="zvol">z: </label>
+						<input type="number" name="zvol" id="zvol" placeholder="Enter z">mm</input>
+					</div>
+					<span class="focus-input100"></span>					
+					
+				</div>
+				
+				<div class="wrap-input100">
+					<span class="label-input100">Final Volume of the Part</span>
+					<div>
+						<input type="number" name="finalv" id="finalv" placeholder="Enter final V">mm&#179;</input>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100">
+					<span class="label-input100">Final Height of the Part</span>
+					<div>
+						<input type="number" name="finalh" id="finalh" placeholder="Enter final height">mm</input>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+				
+				
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Material Type</span>
+					<div>
+						<select onchange="selection3dFunction();" class="selection-2" name="materialType" id="materialType">
+							<option>Choose Material Type</option>
+							<option>ABS</option>
+							<option>POM</option>
+							<option>Aliminum 6061</option>
+							<option>Stainless Steel 304</option>
+						</select>
+					</div>					
+					
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100">
+					<span class="label-input100">Material Removal Rate (MRR) for machining</span>
+					<div>
+						<input type="number" name="mrr" id="mrr" placeholder="Enter MRR">mm&#179;/s</input>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100" id="molddiv">
+					<span class="label-input100">Cost of the Mold for Casting</span>
+					<div>
+						<input type="number" name="mold" id="mold" placeholder="Enter Cost of the Mold">$</input>
+					</div>
+					<span class="focus-input100"></span>
+				</div>	
+
+				<div class="wrap-input100 input100-select" id="castdiv">
+					<span class="label-input100">Casting type</span>
+					<div>
+						<select class="selection-2" name="castingType" id="castingType">
+							<option>Choose Casting Type</option>
+							<option>Investment Casting</option>
+							<option>Sand Casting</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+				
+
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Machining type</span>
+					<div>
+						<select onchange="selectionFunction();" class="selection-2" name="machiningType" id="machiningType">
+							<option>Choose Machining Type</option>
+							<option>Turning</option>
+							<option>Milling</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
+				
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Machine Tool for Machining</span>
+					<span class="focus-input100"></span>
+				
+					
+					<span class="a">					
+						<input type="radio" id="machine1" name="machine">
+						<label id="machine1label"></label><br>									
+					</span>
+					
+					<span class="a">					
+						<input type="radio" id="machine2" name="machine">
+						<label id="machine2label"></label><br>			
+					</span>
+					
+				</div>
+				
+					
+					
+				<div class="wrap-input100 input100-select">
+					<div class="wrap-input100 input100-select">
+						<span class="label-input100">Machine Tool for 3D</span>
+					<div>
+					<span class="a">					
+						<input type="radio" id="machine3" name="machine3">
+						<label id="machine3label"></label><br>									
+					</span>
+				</div>
+				
+				</div>
+				</div>
+
+
+				<div class="container-contact100-form-btn" onclick="myFunction()">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn" ></div>
+						
+						<div id="button" class="contact100-form-btn"><a style="font-weight:bold; color:black;">SUBMIT</a></div>
+					</div>
+				</div>
+				
+				
+				
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+	
+	<script>	
+	var div = document.getElementById("molddiv");
+	div.style.display = "none";
+	var div1 = document.getElementById("castdiv");
+	div1.style.display = "none";
+	
+	
+	
+	var url_string = window.location.href;
+	console.log("url string: ", url_string);
+	var url = new URL(url_string);
+	console.log("url: ", url);
+	
+	var quantity = url.searchParams.get("para1");
+	console.log("quantity: " + quantity);
+	
+	
+	if (quantity == null)
+	{
+		console.log("empty");	
+	}
+	else
+	{
+		console.log("not empty");
+		var x = url.searchParams.get("para2");
+		console.log(x);	
+		
+		var y = url.searchParams.get("para3");
+		console.log(y);	
+		
+		var z = url.searchParams.get("para4");
+		console.log(z);	
+		
+		var machiningType = url.searchParams.get("para5");
+		console.log(machiningType);	
+		
+		var materialtype = url.searchParams.get("para6");
+		console.log(materialtype);
+		
+		var finalv = url.searchParams.get("para7");
+		console.log(finalv);
+		
+		var finalh = url.searchParams.get("para8");
+		console.log(finalh);
+		
+		var mrr = url.searchParams.get("para9");
+		console.log(mrr);
+		
+		var machinename = url.searchParams.get("para10");
+		console.log(machinename);
+		
+		var mold = url.searchParams.get("para11");
+		console.log(mold);	
+		
+		document.getElementById("quantity").value = quantity;
+		document.getElementById("xvol").value = x;
+		document.getElementById("yvol").value = y;
+		document.getElementById("zvol").value = z;
+		
+		document.getElementById("finalv").value = finalv;
+		document.getElementById("finalh").value = finalh;		
+		document.getElementById("mrr").value = mrr;
+		document.getElementById("mold").value = 0;
+		
+		document.getElementById("materialType").value = materialtype;
+		document.getElementById("machiningType").value = machiningType;
+		selectionFunction();
+		
+		if(machinename == "Haas ST30Y" || machinename == "Haas UMC500")
+		{
+			document.getElementById('machine1').checked = true;
+		}
+		else if(machinename == "Doosan LYNX 2100LB" || machinename == "Mazak VC500C")
+		{
+			document.getElementById('machine2').checked = true;
+		}
+		selection3dFunction();
+	}
+	
+	
+	
+	var inputsCorrect = true;
+	
+	function inputChecker(){
+		var quantity = document.getElementById("quantity").value;
+		var x = document.getElementById("xvol").value;
+		var y = document.getElementById("yvol").value;
+		var z = document.getElementById("zvol").value;
+		
+		var finalv = document.getElementById("finalv").value;
+		var finalh = document.getElementById("finalh").value;		
+		var mrr = document.getElementById("mrr").value;
+		var mold = document.getElementById("mold").value;
+		
+		var materialType = document.getElementById("materialType").value;
+		var machiningType = document.getElementById("machiningType").value;
+		console.log("machining type: " + machiningType)
+		console.log("material typw: " + materialType)
+		
+		var castingType = document.getElementById("castingType").value;
+		console.log("casting type: " + castingType);
+		
+		var machine = "";
+		if (document.getElementById('machine1').checked) {
+			machine = document.getElementById('machine1label').innerText;
+		}
+		if (document.getElementById('machine2').checked) {
+			machine = document.getElementById('machine2label').innerText;
+		}
+		console.log("machine: " + machine)	
+		
+		
+		
+		if (isNaN(quantity) || quantity < 1 || quantity > 10000000) {
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("Quantity must be between 1 and 100")
+		}
+		else if (isNaN(x) || x < 1 || x > 1000)
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("x dimension must be between 1 and 1000")
+		}
+		else if (isNaN(y) || y < 1 || y > 1000)
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("y dimension must be between 1 and 1000")
+		}
+		else if (isNaN(z) || z < 1 || z > 1000)
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("z dimension must be between 1 and 1000000")
+		}
+		else if (isNaN(finalv) || finalv < 1)
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("Final volume must be between 1 and 1000")
+		}
+		else if (isNaN(finalh) || finalh < 1 || finalh > 1000)
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("Final height must be between 1 and 1000")
+		}
+		else if (isNaN(mrr) || mrr < 1 || mrr > 1000)
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("MRR must be between 1 and 1000")
+		}
+		else if(materialType == "Choose Material Type")
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("Choose a material type")
+		}
+		else if(machiningType == "Choose Machining Type")
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("Choose a machining type")
+		}
+		else if(machine == "")
+		{
+			console.log("invalid input")
+			inputsCorrect = false;
+			alert("Choose a machine")
+		}
+		else
+		{
+			inputsCorrect = true;
+		}
+	
+	
+	}
+	
+
+	function selectionFunction() {
+		var sel = document.getElementById('machiningType').value;
+		
+		
+		if (sel == "Turning")
+		{
+			console.log("chosen type: " + sel);
+			document.getElementById('machine1label').innerText = "Haas ST30Y";
+			document.getElementById('machine2label').innerText = "Doosan LYNX 2100LB";		
+		}
+		else if (sel == "Milling")
+		{
+			console.log("chosen type: " + sel);
+			document.getElementById('machine1label').innerText = "Haas UMC500";
+			document.getElementById('machine2label').innerText = "Mazak VC500C";		
+		}
+
+	}
+	function selection3dFunction() {
+		var sel = document.getElementById('materialType').value;
+		var div = document.getElementById("molddiv");
+		var div1 = document.getElementById("castdiv");	
+		
+		if (sel == "ABS" || sel == "POM")
+		{
+			console.log("chosen type: " + sel);
+			document.getElementById('machine3label').innerText = "INDUSTRY F420";	
+			document.getElementById("machine3").checked = true;
+			div.style.display = "none";
+			div1.style.display = "none";
+			
+			
+		}
+		else if (sel == "Aliminum 6061" || sel == "Stainless Steel 304")
+		{
+			console.log("chosen type: " + sel);
+			document.getElementById('machine3label').innerText = "RENAM 500Q";	
+			document.getElementById("machine3").checked = true;		
+			div.style.display = "block";
+			div1.style.display = "block";
+			
+		}
+
+	}
+	
+	
+	function myFunction() {
+		console.log("Hello world!");
+		var quantity = document.getElementById("quantity").value;
+		var x = document.getElementById("xvol").value;
+		var y = document.getElementById("yvol").value;
+		var z = document.getElementById("zvol").value;
+		
+		var finalv = document.getElementById("finalv").value;
+		var finalh = document.getElementById("finalh").value;		
+		var mrr = document.getElementById("mrr").value;
+		var mold = document.getElementById("mold").value;
+		
+		var castingType = document.getElementById("castingType").value;
+		console.log("casting type: " + castingType);
+		
+		var machine = "";
+		if (document.getElementById('machine1').checked) {
+			machine = document.getElementById('machine1label').innerText;
+		}
+		if (document.getElementById('machine2').checked) {
+			machine = document.getElementById('machine2label').innerText;
+		}
+		
+		var machiningType = document.getElementById("machiningType").value;
+		var materialType = document.getElementById("materialType").value;
+		console.log("quantity: " + quantity + " x: " + x +" y: " + y+" z: "+z+ " machining: " + machiningType+" material: "+materialType+" machine: "+machine);
+		var queryString = "?para1=" + quantity + "&para2=" + x + "&para3=" + y + "&para4=" + z + "&para5=" + machiningType + "&para6=" + materialType 
+			+ "&para7=" + finalv + "&para8=" + finalh + "&para9=" + mrr + "&para10=" + machine + "&para11=" + mold;
+			
+		document.cookie = "matType = " + materialType;
+		document.cookie = "machineName = " + machine;
+		document.cookie = "castingType = " + castingType;
+		
+		inputChecker();
+		console.log("inputs correct: " + inputsCorrect)
+		if(inputsCorrect == true)
+		{
+			window.location.href = "resultPage.php" + queryString;		
+		}
+		
+	}
+	</script>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<!-- <script> -->
+  <!-- window.dataLayer = window.dataLayer || []; -->
+  <!-- function gtag(){dataLayer.push(arguments);} -->
+  <!-- gtag('js', new Date()); -->
+
+  <!-- gtag('config', 'UA-23581568-13'); -->
+<!-- </script> -->
+
+</body>
+</html>
